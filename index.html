@@ -137,60 +137,94 @@ button:focus-visible,.stage-card:focus-visible{outline:2px solid var(--aero);out
   .hud-btns{top:calc(env(safe-area-inset-top,0px) + 96px);}
 }
 
-/* ---------- Phone UI (touch devices / narrow screens only) ---------- */
-@media (max-width:640px), (pointer:coarse) and (max-width:960px){
-  .lbl{font-size:12px;letter-spacing:.18em;}
-  .hud-tl,.hud-tr{top:calc(env(safe-area-inset-top,0px) + 12px);}
-  .score{font-size:38px;}
-  .sub{font-size:16px;margin-top:6px;}
-  .speed{font-size:40px;}
-  .speed small{font-size:13px;}
-  .speedbar{width:150px;height:6px;}
-  .mult{font-size:17px;}
-  .hud-bl{bottom:calc(env(safe-area-inset-bottom,0px) + 20px);}
-  .shield-row{gap:5px;}
-  .shield-row i{width:24px;height:18px;}
-  .boost{height:7px;width:170px;}
-  .combo{top:calc(env(safe-area-inset-top,0px) + 96px);}
-  .combo .n{font-size:32px;}
-  .combo .t{font-size:12px;}
-  .pop{font-size:24px;}
-  .banner .no{font-size:14px;}
-  .banner .nm{font-size:30px;}
-  .banner .jp{font-size:17px;}
-  .hud-btns{top:calc(env(safe-area-inset-top,0px) + 142px);gap:12px;}
-  .icon-btn{width:52px;height:52px;}
-  .icon-btn svg{width:24px;height:24px;}
-  #hud::before{height:200px;}
+/* ---------- Phone UI: sized in % of the screen's short side, so it stays big on any phone ---------- */
+html.phone{--u:1vmin;}
+html.phone .lbl{font-size:calc(var(--u)*3.6);letter-spacing:.14em;}
+html.phone #hud::before{height:calc(var(--u)*52);background:linear-gradient(180deg,rgba(2,16,28,.62),rgba(2,16,28,0));}
+html.phone #hud::after{height:calc(var(--u)*34);background:linear-gradient(0deg,rgba(2,16,28,.55),rgba(2,16,28,0));}
+html.phone .hud-tl{left:calc(var(--u)*4);top:calc(env(safe-area-inset-top,0px) + calc(var(--u)*3));}
+html.phone .hud-tr{right:calc(var(--u)*4);top:calc(env(safe-area-inset-top,0px) + calc(var(--u)*3));}
+html.phone .score{font-size:calc(var(--u)*13);text-shadow:0 2px 14px rgba(0,20,40,.8);}
+html.phone .sub{font-size:calc(var(--u)*5);margin-top:calc(var(--u)*1.5);}
+html.phone .speed{font-size:calc(var(--u)*11);}
+html.phone .speed small{font-size:calc(var(--u)*3.4);margin-left:calc(var(--u)*1);}
+html.phone .speedbar{width:calc(var(--u)*36);height:calc(var(--u)*1.6);margin-top:calc(var(--u)*2);}
+html.phone .mult{font-size:calc(var(--u)*5);margin-top:calc(var(--u)*1.5);}
+html.phone .hud-btns{right:calc(var(--u)*4);top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + calc(var(--u)*5));gap:calc(var(--u)*3.5);flex-direction:column;}
+html.phone .icon-btn{width:calc(var(--u)*19);height:calc(var(--u)*19);background:rgba(6,22,33,.72);border:2px solid rgba(190,240,255,.55);}
+html.phone .icon-btn svg{width:calc(var(--u)*9);height:calc(var(--u)*9);stroke-width:2.4;}
+html.phone .hud-bl{left:calc(var(--u)*4);bottom:calc(env(safe-area-inset-bottom,0px) + calc(var(--u)*5));}
+html.phone .shield-row{gap:calc(var(--u)*1.3);margin-top:calc(var(--u)*1.5);}
+html.phone .shield-row i{width:calc(var(--u)*6.2);height:calc(var(--u)*5);}
+html.phone .boost{height:calc(var(--u)*2);width:calc(var(--u)*50);margin-top:calc(var(--u)*2.5);}
+html.phone .combo{top:calc(env(safe-area-inset-top,0px) + calc(var(--u)*40));}
+html.phone .combo .n{font-size:calc(var(--u)*11);}
+html.phone .combo .t{font-size:calc(var(--u)*3.6);}
+html.phone .pop{font-size:calc(var(--u)*7);}
+html.phone .banner .no{font-size:calc(var(--u)*4);}
+html.phone .banner .nm{font-size:calc(var(--u)*9);}
+html.phone .banner .jp{font-size:calc(var(--u)*5);}
 
-  .title-col{gap:18px;}
-  .logo{font-size:54px;}
-  .logo-sub{font-size:15px;}
-  .tagline{font-size:16px;line-height:1.75;}
-  .stage-list{gap:12px;}
-  .stage-card{grid-template-columns:96px 1fr auto;gap:14px;padding:10px 14px 10px 10px;min-height:88px;}
-  .stage-card .thumb{width:96px;height:68px;}
-  .stage-card .no{font-size:12px;}
-  .stage-card .nm{font-size:17px;margin-top:5px;}
-  .stage-card .jp{font-size:14px;margin-top:4px;}
-  .stage-card .best{font-size:12px;}
-  .stage-card .best b{font-size:19px;}
-  .legend{font-size:15px;gap:10px 18px;}
-  .legend i{width:16px;height:16px;}
-  .controls{font-size:15px;}
+/* title: whole screen */
+html.phone #title{background:linear-gradient(180deg,rgba(3,14,22,.55),rgba(3,14,22,.82) 40%,rgba(3,14,22,.9));padding:calc(env(safe-area-inset-top,0px) + calc(var(--u)*6)) calc(var(--u)*5) calc(env(safe-area-inset-bottom,0px) + calc(var(--u)*5));}
+html.phone .title-col{margin:0;max-width:none;width:100%;min-height:100%;gap:calc(var(--u)*3);justify-content:space-between;}
+html.phone .tg2{display:none;}
+html.phone .logo{font-size:calc(var(--u)*17);line-height:.95;}
+html.phone .logo-sub{font-size:calc(var(--u)*4.6);gap:calc(var(--u)*3);margin-top:calc(var(--u)*2);}
+html.phone .logo-sub::before{width:calc(var(--u)*10);}
+html.phone .tagline{font-size:calc(var(--u)*4.8);line-height:1.6;}
+html.phone .stage-list{flex:1;grid-auto-rows:minmax(calc(var(--u)*20),1fr);gap:calc(var(--u)*2.6);}
+html.phone .stage-card{grid-template-columns:calc(var(--u)*30) 1fr auto;gap:calc(var(--u)*4);padding:calc(var(--u)*2.2) calc(var(--u)*4) calc(var(--u)*2.2) calc(var(--u)*2.2);border-radius:calc(var(--u)*3);border-width:2px;background:rgba(8,30,44,.7);}
+html.phone .stage-card:hover,html.phone .stage-card.sel{transform:none;}
+html.phone .stage-card .thumb{width:calc(var(--u)*30);height:100%;min-height:calc(var(--u)*15);border-radius:calc(var(--u)*2);}
+html.phone .stage-card .thumb.journey::after{font-size:calc(var(--u)*10);}
+html.phone .stage-card .no{font-size:calc(var(--u)*3.6);letter-spacing:.18em;}
+html.phone .stage-card .nm{font-size:calc(var(--u)*5.8);margin-top:calc(var(--u)*1.2);line-height:1.15;}
+html.phone .stage-card .jp{font-size:calc(var(--u)*4);margin-top:calc(var(--u)*1);}
+html.phone .stage-card .best{font-size:calc(var(--u)*3.4);}
+html.phone .stage-card .best b{font-size:calc(var(--u)*6);}
+html.phone .legend{font-size:calc(var(--u)*4.2);gap:calc(var(--u)*2) calc(var(--u)*5);}
+html.phone .legend i{width:calc(var(--u)*4.5);height:calc(var(--u)*4.5);border-width:calc(var(--u)*1);}
+html.phone .controls{font-size:calc(var(--u)*4.2);}
+html.phone .controls .kb{display:none;}
 
-  .result-card{gap:20px;padding:26px 20px;}
-  .result-card .where{font-size:13px;}
-  .result-card h2{font-size:28px;}
-  .big-score{font-size:56px;}
-  .newrec{font-size:14px;padding:5px 10px;}
-  .stats{grid-template-columns:repeat(2,1fr);gap:14px;}
-  .stats b{font-size:24px;}
-  .rank{font-size:16px;}
-  .rank td{padding:8px 4px;}
-  .btn{font-size:17px;padding:18px 18px;min-height:60px;border-radius:6px;}
-  .hint{display:none;}
-  .controls .kb{display:none;}
+/* pause + result: fill the screen */
+html.phone #result,html.phone #pause{padding:calc(env(safe-area-inset-top,0px) + calc(var(--u)*4)) calc(var(--u)*4) calc(env(safe-area-inset-bottom,0px) + calc(var(--u)*4));background:rgba(3,12,20,.72);}
+html.phone .result-card{width:100%;min-height:100%;margin:0;justify-content:space-between;gap:calc(var(--u)*4);padding:calc(var(--u)*7) calc(var(--u)*6);border-radius:calc(var(--u)*4);}
+html.phone #pause .result-card{justify-content:center;gap:calc(var(--u)*8);}
+html.phone .result-card .where{font-size:calc(var(--u)*3.8);}
+html.phone .result-card h2{font-size:calc(var(--u)*9);margin-top:calc(var(--u)*1.5);}
+html.phone .big-score{font-size:calc(var(--u)*20);}
+html.phone .newrec{font-size:calc(var(--u)*4);padding:calc(var(--u)*1.2) calc(var(--u)*2.5);margin-left:0;margin-top:calc(var(--u)*2);display:inline-block;}
+html.phone #rNew:not([hidden]){display:table;}
+html.phone .stats{grid-template-columns:repeat(2,1fr);gap:calc(var(--u)*4);}
+html.phone .stats div{padding-top:calc(var(--u)*2);}
+html.phone .stats b{font-size:calc(var(--u)*7.2);margin-top:calc(var(--u)*1);}
+html.phone .rank{font-size:calc(var(--u)*4.6);}
+html.phone .rank td{padding:calc(var(--u)*2.2) calc(var(--u)*1);}
+html.phone .rank td:first-child{width:calc(var(--u)*8);}
+html.phone .btn-row{gap:calc(var(--u)*3);flex-direction:column;}
+html.phone .btn{flex:none;width:100%;font-size:calc(var(--u)*6);min-height:calc(var(--u)*18);padding:calc(var(--u)*3);border-radius:calc(var(--u)*3);letter-spacing:.12em;}
+html.phone .hint{display:none;}
+
+html.phone .stage-card .jp{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+html.phone .stage-card > div:nth-child(2){min-width:0;}
+@media (orientation:portrait){ html.phone .tagline,html.phone .controls{display:none;} }
+/* phone held sideways: two columns so nothing gets too tall */
+@media (orientation:landscape){
+  html.phone .title-col{height:100%;min-height:0;}
+  html.phone .stage-list{grid-auto-rows:1fr;min-height:0;}
+  html.phone .stage-card .jp{display:none;}
+  html.phone .stage-card .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  html.phone .stage-card .thumb{min-height:0;}
+  html.phone .title-col{display:grid;grid-template-columns:1fr 1.25fr;grid-template-rows:auto auto 1fr auto;column-gap:calc(var(--u)*6);}
+  html.phone .title-col > div:first-child,html.phone .tagline,html.phone .legend,html.phone .controls{grid-column:1;}
+  html.phone .stage-list{grid-column:2;grid-row:1 / span 4;}
+  html.phone .logo{font-size:calc(var(--u)*17);}
+  html.phone .result-card{max-width:calc(var(--u)*170);margin:0 auto;}
+  html.phone .btn-row{flex-direction:row;}
+  html.phone .stats{grid-template-columns:repeat(3,1fr);}
+  html.phone .btn{flex:1;}
 }
 @media (prefers-reduced-motion:reduce){
   .pop{animation-duration:.6s;}
@@ -234,7 +268,7 @@ button:focus-visible,.stage-card:focus-visible{outline:2px solid var(--aero);out
       <h1 class="logo">SKY<br>BOUND</h1>
       <div class="logo-sub">スカイバウンド</div>
     </div>
-    <p class="tagline">見知らぬ世界を、限界速度で駆け抜けろ。<br>速度は少しずつ上がり続ける ― どこまで遠くへ行けるか。</p>
+    <p class="tagline">見知らぬ世界を、限界速度で駆け抜けろ。<span class="tg2"><br>速度は少しずつ上がり続ける ― どこまで遠くへ行けるか。</span></p>
     <div class="stage-list" id="stageList"></div>
     <div class="legend">
       <span style="color:var(--yellow)"><i></i>スコア＋コンボ</span>
@@ -701,6 +735,14 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const damp = (a, b, k, dt) => lerp(a, b, 1 - Math.exp(-k * dt));
 
+const IS_PHONE = (() => {
+  try {
+    const touch = matchMedia('(pointer:coarse)').matches || 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const short = Math.min(screen.width, screen.height);
+    return touch && short <= 600;
+  } catch (e) { return false; }
+})();
+if (IS_PHONE) document.documentElement.classList.add('phone');
 const canvas = document.getElementById('game');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
