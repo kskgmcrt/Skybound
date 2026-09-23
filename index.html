@@ -169,22 +169,23 @@ html.phone .banner .jp{font-size:calc(var(--u)*5);}
 html.phone #title{background:linear-gradient(180deg,rgba(3,14,22,.55),rgba(3,14,22,.82) 40%,rgba(3,14,22,.9));padding:calc(env(safe-area-inset-top,0px) + calc(var(--u)*6)) calc(var(--u)*5) calc(env(safe-area-inset-bottom,0px) + calc(var(--u)*5));}
 html.phone .title-col{margin:0;max-width:none;width:100%;min-height:100%;gap:calc(var(--u)*3);justify-content:space-between;}
 html.phone .tg2{display:none;}
-html.phone .logo{font-size:calc(var(--u)*17);line-height:.95;}
+html.phone .logo{font-size:calc(var(--u)*14.5);letter-spacing:.02em;line-height:.95;}
 html.phone .logo-sub{font-size:calc(var(--u)*4.6);gap:calc(var(--u)*3);margin-top:calc(var(--u)*2);}
 html.phone .logo-sub::before{width:calc(var(--u)*10);}
 html.phone .tagline{font-size:calc(var(--u)*4.8);line-height:1.6;}
 html.phone .stage-list{flex:1;grid-auto-rows:minmax(calc(var(--u)*20),1fr);gap:calc(var(--u)*2.6);}
-html.phone .stage-card{grid-template-columns:calc(var(--u)*30) 1fr auto;gap:calc(var(--u)*4);padding:calc(var(--u)*2.2) calc(var(--u)*4) calc(var(--u)*2.2) calc(var(--u)*2.2);border-radius:calc(var(--u)*3);border-width:2px;background:rgba(8,30,44,.7);}
+html.phone .stage-card{grid-template-columns:calc(var(--u)*28) minmax(0,1fr);grid-template-rows:1fr auto;align-items:center;row-gap:calc(var(--u)*1);gap:calc(var(--u)*4);padding:calc(var(--u)*2.2) calc(var(--u)*4) calc(var(--u)*2.2) calc(var(--u)*2.2);border-radius:calc(var(--u)*3);border-width:2px;background:rgba(8,30,44,.7);}
 html.phone .stage-card:hover,html.phone .stage-card.sel{transform:none;}
-html.phone .stage-card .thumb{width:calc(var(--u)*30);height:100%;min-height:calc(var(--u)*15);border-radius:calc(var(--u)*2);}
+html.phone .stage-card .thumb{grid-row:1 / 3;align-self:stretch;width:calc(var(--u)*28);height:100%;min-height:calc(var(--u)*15);border-radius:calc(var(--u)*2);}
 html.phone .stage-card .thumb.journey::after{font-size:calc(var(--u)*10);}
 html.phone .stage-card .no{font-size:calc(var(--u)*3.6);letter-spacing:.18em;}
-html.phone .stage-card .nm{font-size:calc(var(--u)*5.8);margin-top:calc(var(--u)*1.2);line-height:1.15;}
+html.phone .stage-card .nm{font-size:calc(var(--u)*4.3);letter-spacing:0;margin-top:calc(var(--u)*1.2);line-height:1.2;overflow-wrap:anywhere;}
 html.phone .stage-card .jp{font-size:calc(var(--u)*4);margin-top:calc(var(--u)*1);}
-html.phone .stage-card .best{font-size:calc(var(--u)*3.4);}
-html.phone .stage-card .best b{font-size:calc(var(--u)*6);}
-html.phone .legend{font-size:calc(var(--u)*4.2);gap:calc(var(--u)*2) calc(var(--u)*5);}
-html.phone .legend i{width:calc(var(--u)*4.5);height:calc(var(--u)*4.5);border-width:calc(var(--u)*1);}
+html.phone .stage-card .best{grid-column:2;align-self:end;display:flex;align-items:baseline;gap:calc(var(--u)*2);text-align:left;font-size:calc(var(--u)*3.4);}
+html.phone .stage-card .best b{display:inline;font-size:calc(var(--u)*5.2);}
+html.phone .legend{font-size:calc(var(--u)*3.5);gap:calc(var(--u)*1.5) calc(var(--u)*3);}
+html.phone .legend span{white-space:nowrap;gap:calc(var(--u)*1.2);}
+html.phone .legend i{width:calc(var(--u)*3.8);height:calc(var(--u)*3.8);border-width:calc(var(--u)*0.9);}
 html.phone .controls{font-size:calc(var(--u)*4.2);}
 html.phone .controls .kb{display:none;}
 
@@ -207,8 +208,19 @@ html.phone .btn-row{gap:calc(var(--u)*3);flex-direction:column;}
 html.phone .btn{flex:none;width:100%;font-size:calc(var(--u)*6);min-height:calc(var(--u)*18);padding:calc(var(--u)*3);border-radius:calc(var(--u)*3);letter-spacing:.12em;}
 html.phone .hint{display:none;}
 
+/* phone card: thumb | STAGE no + BEST on one line, name, jp */
+html.phone .stage-card{grid-template-columns:calc(var(--u)*28) minmax(0,1fr) auto;grid-template-rows:auto auto auto;align-content:center;row-gap:calc(var(--u)*0.8);column-gap:calc(var(--u)*3.5);overflow:hidden;}
+html.phone .stage-card > div:nth-child(2){display:contents;}
+html.phone .stage-card .thumb{grid-column:1;grid-row:1 / 4;align-self:stretch;height:auto;}
+html.phone .stage-card .no{grid-column:2;grid-row:1;align-self:center;}
+html.phone .stage-card .nm{grid-column:2 / 4;grid-row:2;margin-top:0;}
+html.phone .stage-card .jp{grid-column:2 / 4;grid-row:3;margin-top:0;}
+html.phone .stage-card .best{grid-column:3;grid-row:1;align-self:center;justify-content:flex-end;gap:calc(var(--u)*1.5);}
+html.phone .title-col{height:100%;min-height:0;}
+html.phone .stage-list{grid-auto-rows:minmax(0,1fr);min-height:0;}
+html.phone .stage-card .thumb{min-height:0;}
 html.phone .stage-card .jp{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-html.phone .stage-card > div:nth-child(2){min-width:0;}
+html.phone .stage-card > div:nth-child(2){min-width:0;align-self:end;}
 @media (orientation:portrait){ html.phone .tagline,html.phone .controls{display:none;} }
 /* phone held sideways: two columns so nothing gets too tall */
 @media (orientation:landscape){
@@ -220,7 +232,7 @@ html.phone .stage-card > div:nth-child(2){min-width:0;}
   html.phone .title-col{display:grid;grid-template-columns:1fr 1.25fr;grid-template-rows:auto auto 1fr auto;column-gap:calc(var(--u)*6);}
   html.phone .title-col > div:first-child,html.phone .tagline,html.phone .legend,html.phone .controls{grid-column:1;}
   html.phone .stage-list{grid-column:2;grid-row:1 / span 4;}
-  html.phone .logo{font-size:calc(var(--u)*17);}
+  html.phone .logo{font-size:calc(var(--u)*14.5);letter-spacing:.02em;}
   html.phone .result-card{max-width:calc(var(--u)*170);margin:0 auto;}
   html.phone .btn-row{flex-direction:row;}
   html.phone .stats{grid-template-columns:repeat(3,1fr);}
